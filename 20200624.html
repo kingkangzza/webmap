@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>항생 내성 지도 시스템</title>
+    <link rel="stylesheet" href="./css/index_20200624.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap">
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <script src="css/leaflet.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/common.js"></script>
+</head>
+
+
+<body>
+    <header>
+        <div class="gis_header_debs_1">
+
+            <div></div>
+            <div id="first_screen" data-id="container1"><b style="color:red; font-weight:900">항생 내성</b> <b style="color:indianred; font-weight:900">지도</b> 시스템</div>
+            <div></div>
+            <div>
+                <nav><img src="./img/khu_logo.PNG" style="width:90px;height:50px;float:left;">경희대학교</nav>
+                <nav>지리학과</nav>
+            </div>
+
+            <div></div>
+
+        </div>
+
+        <div class="gis_header_debs_2">
+
+            <nav></nav>
+            <nav id="basin" data-id="container2">유역 현황 정보</nav>
+            <nav id="anti" data-id="container3">항생 내성 정보</nav>
+            <nav id="spatial" data-id="container4">공간 분석 정보</nav>
+            <nav id="intro" data-id="container5">시스템 소개</nav>
+            <nav></nav>
+
+        </div>
+
+    </header><!-- header -->
+    <div class="tab">
+
+        <div class="container on" id="container1">
+
+            <div id="map" class="map"></div>
+
+            <div id="tap" class="tap">
+
+                <nav>
+                    <span>자료 획득 시기의 수질자료</span>
+                    <span></span>
+                </nav>
+
+
+                <nav>
+                    <span>수질자료</span>
+                    <span></span>
+                    <span>시기 검색
+                        <select>
+                            <option>2016.05.26</option>
+                            <option>2016.08.30</option>
+                            <option>2017.02.16</option>
+                            <option>2017.05.22</option>
+                        </select>
+                    </span>
+
+                </nav>
+
+                <nav style="text-align:center; overflow:auto">
+                    <table class="tg">
+                        <thead>
+                            <tr>
+                                <th id="subject" class="tg-0pky">측정소</th>
+                                <th id="subject" class="tg-0pky">수온</th>
+                                <th id="subject" class="tg-0pky">수소이온</th>
+                                <th id="subject" class="tg-0pky">전기전도도</th>
+                                <th id="subject" class="tg-0pky">용존산소</th>
+                                <th id="subject" class="tg-0pky">총유기탄소</th>
+                                <th id="subject" class="tg-0pky">총질소</th>
+                                <th class="tg-0pky">총인</th>
+                                <th class="tg-0pky">탁도</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="subject_a" class="tg-0pky">평창강</td>
+                                <td class="tg-0pky">25.4</td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+
+                            </tr>
+                            <tr>
+                                <td id="subject_a" class="tg-0pky">단양</td>
+                                <td class="tg-0pky">25.3</td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+
+                            </tr>
+                            <tr>
+                                <td id="subject_a" class="tg-0pky">충주</td>
+                                <td class="tg-0pky">8.6</td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+
+                            </tr>
+                            <tr>
+                                <td id="subject_a" class="tg-0pky">달천</td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+
+                            </tr>
+                            <tr>
+                                <td id="subject_a" class="tg-0pky">원주</td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+
+                            </tr>
+                            <tr>
+                                <td id="subject_a" class="tg-0pky">강천</td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+
+                            </tr>
+                            <tr>
+                                <td id="subject_a" class="tg-0pky">청미천</td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+
+                            </tr>
+                            <tr>
+                                <td id="subject_a" class="tg-0pky">여주</td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+                                <td class="tg-0pky"></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </nav>
+
+                <nav>
+                    <span>간략 항생내성 공간정보 검색</span>
+                    <span></span>
+                    <span id="back" class="back"><a style="cursor: pointer;">← 뒤로가기</a></span>
+                </nav>
+
+                <nav id="anti_button" class="anti_button on">
+                    <button id="anti1" class="anti" data-id="antia">Antibiotic 1</button>
+                    <button id="anti2" class="anti" data-id="antib">Antibiotic 2</button>
+                    <button id="anti3" class="anti" data-id="antic">Antibiotic 3</button>
+                    <button id="anti4" class="anti" data-id="antid">Antibiotic 4</button>
+                    <button id="anti5" class="anti" data-id="antie">Antibiotic 5</button>
+                    <button id="anti6" class="anti" data-id="antif">Antibiotic 6</button>
+                    <button id="anti7" class="anti" data-id="antig">Antibiotic 7</button>
+                    <button id="anti8" class="anti" data-id="antih">Antibiotic 8</button>
+                    <button id="anti9" class="anti" data-id="antii">Antibiotic 9</button>
+                    <button id="anti10" class="anti" data-id="antij">Antibiotic 10</button>
+                    <button id="anti11" class="anti" data-id="antik">Antibiotic 11</button>
+                    <button id="anti12" class="anti" data-id="antil">Antibiotic 12</button>
+                    <button id="anti13" class="anti" data-id="antim">Antibiotic 13</button>
+                    <button id="anti14" class="anti" data-id="antin">Antibiotic 14</button>
+                    <button id="anti15" class="anti" data-id="antio">Antibiotic 15</button>
+                    <button id="anti16" class="anti" data-id="antip">Antibiotic 16</button>
+
+                </nav>
+
+                <nav id="antia" class="antia">
+                    위치(주소), 포인트의 좌표, 가장 가까운 측정소로부터의 거리 (표 형태로 제공)
+                </nav>
+
+                <nav id="antib" class="antia">
+
+                </nav>
+
+                <nav id="antic" class="antia">
+
+                </nav>
+
+                <nav id="antid" class="antia">
+
+                </nav>
+
+                <nav id="antie" class="antia">
+
+                </nav>
+
+                <nav id="antif" class="antia">
+
+                </nav>
+
+                <nav id="antig" class="antia">
+
+                </nav>
+
+                <nav id="antih" class="antia">
+
+                </nav>
+
+                <nav id="antii" class="antia">
+
+                </nav>
+
+                <nav id="antij" class="antia">
+
+                </nav>
+
+                <nav id="antik" class="antia">
+
+                </nav>
+
+                <nav id="antil" class="antia">
+
+                </nav>
+
+                <nav id="antim" class="antia">
+
+                </nav>
+
+                <nav id="antin" class="antia">
+
+                </nav>
+
+                <nav id="antio" class="antia">
+
+                </nav>
+
+                <nav id="antip" class="antia">
+
+                </nav>
+
+
+            </div>
+            <!--tap-->
+
+        </div>
+        <!--container-->
+
+        <div class="container2" id="container2">
+
+            <div id="map2" class="map2">
+
+
+            </div>
+
+            <div id="tap2" class="tap2">
+                <nav>
+                    <span>연구 유역에 대한 정보</span>
+                    <span></span>
+                </nav>
+
+
+                <nav>
+                    <span>자료 선택</span>
+                    <span></span>
+                    <span>
+                    </span>
+
+                </nav>
+
+                <nav>
+                    <span> 하천관련
+                        <select id="selectBox">
+                           <option value="">선택</option>
+                            <option value="river_basin">유역도</option>
+                            <option value="stream">하천도</option>
+                        </select>
+                    </span>
+
+                    <span> 지형관련
+                        <select id="selectBox1">
+                           <option value="">선택</option>
+                            <option value="dem">DEM</option>
+                            <option value="slope">사면경사</option>
+                            <option value="aspect">사면방향</option>
+                            <option value="hillshade">음영기복도</option>
+                        </select>
+                    </span>
+
+                    <span> 토지관련
+                        <select id="selectBox2">
+                           <option value="">선택</option>
+                            <option value="landuse">토지피복도</option>
+                            <option value="bound">행정구역도</option>
+                            <option value="road">도로망</option>
+                        </select>
+                    </span>
+
+                    <span> 기후관련
+                        <select id="selectBox3">
+                           <option value="">선택</option>
+                            <option value="rain">강우</option>
+                        </select>
+                    </span>
+
+                    <span> 임상관련
+                        <select id="selectBox4">
+                           <option value="">선택</option>
+                            <option value="forest_type">임상종류</option>
+                            <option value="kung">경급</option>
+                            <option value="yung">영급</option>
+                            <option value="forest_density">임상밀도</option>
+                        </select>
+                    </span>
+
+                </nav>
+                <nav>
+                    <span>자료 설명</span>
+                    <span>
+                       <p class="pp1"></p>
+                        <p id="p1" class="pp">유역도는...</p>
+                        <p id="p2" class="pp">하천도는...</p>
+                        <p id="p3" class="pp">DEM...</p>
+                        <p id="p4" class="pp">사면경사</p>
+                        <p id="p5" class="pp">사면방향</p>
+                        <p id="p6" class="pp">음영기복도</p>
+                        <p id="p7" class="pp">토지피복도</p>
+                        <p id="p8" class="pp">행정구역도</p>
+                        <p id="p9" class="pp">도로망</p>
+                        <p id="p10" class="pp">강우</p>
+                        <p id="p11" class="pp">임상종류</p>
+                        <p id="p12" class="pp">경급</p>
+                        <p id="p13" class="pp">영급</p>
+                        <p id="p14" class="pp">임상밀도</p>
+                    </span>
+                </nav>
+
+
+
+                <nav>
+                    <span>간략 항생내성 공간정보 검색</span>
+                    <span></span>
+                    <span id="back1" class="back1"><a style="cursor: pointer;">← 뒤로가기</a></span>
+                </nav>
+
+                <nav id="anti_button1" class="anti_button1 on">
+                    <button id="anti1a" class="anti" data-id="antiaa">Antibiotic 1</button>
+                    <button id="anti2a" class="anti" data-id="antibb">Antibiotic 2</button>
+                    <button id="anti3a" class="anti" data-id="anticc">Antibiotic 3</button>
+                    <button id="anti4a" class="anti" data-id="antidd">Antibiotic 4</button>
+                    <button id="anti5a" class="anti" data-id="antiee">Antibiotic 5</button>
+                    <button id="anti6a" class="anti" data-id="antiff">Antibiotic 6</button>
+                    <button id="anti7a" class="anti" data-id="antigg">Antibiotic 7</button>
+                    <button id="anti8a" class="anti" data-id="antihh">Antibiotic 8</button>
+                    <button id="anti9a" class="anti" data-id="antiii">Antibiotic 9</button>
+                    <button id="anti10a" class="anti" data-id="antijj">Antibiotic 10</button>
+                    <button id="anti11a" class="anti" data-id="antikk">Antibiotic 11</button>
+                    <button id="anti12a" class="anti" data-id="antill">Antibiotic 12</button>
+                    <button id="anti13a" class="anti" data-id="antimm">Antibiotic 13</button>
+                    <button id="anti14a" class="anti" data-id="antinn">Antibiotic 14</button>
+                    <button id="anti15a" class="anti" data-id="antioo">Antibiotic 15</button>
+                    <button id="anti16a" class="anti" data-id="antipp">Antibiotic 16</button>
+
+                </nav>
+
+                <nav id="antiaa" class="antib">
+                    위치(주소), 포인트의 좌표, 가장 가까운 측정소로부터의 거리 (표 형태로 제공)
+                </nav>
+
+                <nav id="antibb" class="antib">
+
+                </nav>
+
+                <nav id="anticc" class="antib">
+
+                </nav>
+
+                <nav id="antidd" class="antib">
+
+                </nav>
+
+                <nav id="antiee" class="antib">
+
+                </nav>
+
+                <nav id="antiff" class="antib">
+
+                </nav>
+
+                <nav id="antigg" class="antib">
+
+                </nav>
+
+                <nav id="antihh" class="antib">
+
+                </nav>
+
+                <nav id="antiii" class="antib">
+
+                </nav>
+
+                <nav id="antijj" class="antib">
+
+                </nav>
+
+                <nav id="antikk" class="antib">
+
+                </nav>
+
+                <nav id="antill" class="antib">
+
+                </nav>
+
+                <nav id="antimm" class="antib">
+
+                </nav>
+
+                <nav id="antinn" class="antib">
+
+                </nav>
+
+                <nav id="antioo" class="antib">
+
+                </nav>
+
+                <nav id="antipp" class="antib">
+
+                </nav>
+
+            </div>
+
+        </div>
+
+
+        <div class="container3" id="container3">
+
+            <div id="map3" class="map3">
+
+
+            </div>
+
+            <div id="tap3" class="tap3">
+
+
+            </div>
+
+        </div>
+
+
+        <div class="container4" id="container4">
+
+            <div id="map4" class="map4">
+
+
+            </div>
+
+            <div id="tap4" class="tap4">
+
+
+            </div>
+
+        </div>
+
+        <div class="container" id="container5">
+
+
+        </div>
+    </div> <!-- tab -->
+
+    <div id="footer" class="footer">
+
+        <div id="footer1" class="footer1">
+            <nav></nav>
+            <nav></nav>
+            <nav>홈페이지 안내 : 02-961-9188</nav>
+            <nav></nav>
+        </div>
+
+        <div id="footer2" class="footer2">
+            <nav><img src="./img/khu_logo.PNG">
+                경희대학교 (02447) 서울특별시 동대문구 경희대로 26
+                Kyunghee Univ. Seoul. Dongdaemun-gu. Kyungheedae-ro 26.</nav>
+            <nav><img src="./img/cau_logo.jpg"> 중앙대학교 (17546) 경기도 안성시 대덕면 서동대로 4726</nav>
+            <nav><img src="./img/envior_logo.PNG"> 환경부 (30103) 세종특별자치시 도움6로 정부세종청사</nav>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+<script type="text/javascript" src="script/script.js"></script></html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>항생 내성 지도 시스템</title>
+    <link rel="stylesheet" href="/css/index_20200603_2.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <script src="css/leaflet.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+
+
+<body>
+    <header>
+        <div class="gis_header_debs_1">
+
+            <div></div>
+            <div id="first_screen" class="first_screen"><b style="color:red; font-weight:900">항생 내성</b> <b style="color:indianred; font-weight:900">지도</b> 시스템</div>
+            <div></div>
+            <div>
+                <nav><img src="./img/khu_logo.PNG" style="width:90px;height:50px;float:left;">경희대학교</nav>
+                <nav>지리학과</nav>
+            </div>
+
+            <div></div>
+
+        </div>
+
+        <div class="gis_header_debs_2">
+
+            <nav></nav>
+            <nav id="basin" class="basin">유역 현황 정보</nav>
+            <nav id="anti" class="anti">항생 내성 정보</nav>
+            <nav id="spatial" class="spatial">공간 분석 정보</nav>
+            <nav id="intro" class="intro">시스템 소개</nav>
+            <nav></nav>
+
+        </div>
+
+    </header><!-- header -->
+
+    <div id="container1" class="container1">
+
+        <div id="map" class="map"></div>
+
+        <div id="tap" class="tap">
+
+            <nav>
+                <span>자료 획득 시기의 수질자료</span>
+                <span></span>
+                <span></span>
+            </nav>
+
+
+            <nav>
+                <span>수질자료</span>
+                <span></span>
+                <span>시기 검색
+                    <select>
+                        <option>1</option>
+                        <option>1</option>
+                        <option>1</option>
+                        <option>1</option>
+                    </select>
+                </span>
+
+            </nav>
+
+            <nav style="text-align:center; overflow:scroll;">
+수질자료 표로 불러오기. Table 형태. 형태는 그림과 같음.<br>
+           <img src="img/data_table.PNG">
+            </nav>
+
+            <nav>
+<span>간편 항생내성정보 검색</span>
+<span></span>
+<span>←뒤로가기</span>
+            </nav>
+
+            <nav>
+                <button>Antibiotic 1</button>
+                <button>Antibiotic 2</button>
+                <button>Antibiotic 3</button>
+                <button>Antibiotic 4</button>
+                <button>Antibiotic 5</button>
+                <button>Antibiotic 6</button>
+                <button>Antibiotic 7</button>
+                <button>Antibiotic 8</button>
+                <button>Antibiotic 9</button>
+                <button>Antibiotic 10</button>
+                <button>Antibiotic 11</button>
+                <button>Antibiotic 12</button>
+                <button>Antibiotic 13</button>
+                <button>Antibiotic 14</button>
+                <button>Antibiotic 15</button>
+                <button>Antibiotic 16</button>
+
+            </nav>
+
+
+        </div>
+        <!--tap-->
+
+    </div>
+    <!--container-->
+
+    <div id="container2" class="container2">
+
+
+    </div>
+
+
+    <div id="container3" class="container3">
+
+
+    </div>
+
+
+    <div id="container4" class="container4">
+
+
+    </div>
+
+    <div id="container5" class="container5">
+
+
+    </div>
+
+
+    <div id="footer" class="footer">
+
+        <div id="footer1" class="footer1">
+            <nav></nav>
+            <nav>홈페이지 안내 : 02-961-9188</nav>
+            <nav></nav>
+            <nav></nav>
+        </div>
+
+        <div id="footer2" class="footer2">
+            <nav><img src="./img/khu_logo.PNG" style="width:70px;height:40px;float:right; position:relative;top:17px;"></nav>
+            <nav>경희대학교 (02447) 서울특별시 동대문구 경희대로 26<br>
+                Kyunghee Univ. Seoul. Dongdaemun-gu. Kyungheedae-ro 26.</nav>
+            <nav><img src="./img/envior_logo.PNG" style="width:30px;height:30px;float:left; position:relative;top:21.5px;"> 환경부 (30103) 세종특별자치시 도움6로 정부세종청사</nav>
+            <nav></nav>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+<script script type="text/javascript">
+    var lat = 36.1358642; //위도
+    var lng = 128.0785804; //경도
+    var zoom = 7; //줌 레벨
+    var mymap = L.map('map', {
+        center: [lat, lng],
+        zoom: zoom
+    });
+    //L.tileLayer('http://xdworld.vworld.kr:8080/2d/Base/service/{z}/{x}/{y}.png').addTo(mymap); //브이월드 지도
+    //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap); //OSM
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' //화면 오른쪽 하단 attributors
+    }).addTo(mymap);
+</script>
+<script>
+    $(document).ready(function() { //DOM이 준비되고
+        $('#first_screen').click(function() { // ID가 toggleButton인 요소를 클릭하면
+            var state1 = $('#container1').css('display'); // state 변수에 ID가 moreMenu인 요소의 display의 속성을 '대입'
+            if (state1 == 'none') { // state가 none 상태일경우
+                $('#container1').show();
+                $('#container2').hide(); // ID가 moreMenu인 요소를 show();
+                $('#container3').hide();
+                $('#container4').hide();
+                $('#container5').hide();
+            }
+        });
+    });
+
+
+    $(document).ready(function() { //DOM이 준비되고
+        $('#basin').click(function() { // ID가 toggleButton인 요소를 클릭하면
+            var state2 = $('#container2').css('display'); // state 변수에 ID가 moreMenu인 요소의 display의 속성을 '대입'
+            if (state2 == 'none') { // state가 none 상태일경우
+                $('#container1').hide(); // ID가 moreMenu인 요소를 show();
+                $('#container2').show();
+                $('#container3').hide();
+                $('#container4').hide();
+                $('#container5').hide();
+            } else { // 그 외에는
+                $('#container1').hide();
+                $('#container2').show();
+                $('#container3').hide();
+                $('#container4').hide();
+                $('#container5').hide();
+                // ID가 moreMenu인 요소를 hide();
+            }
+        });
+    });
+
+    $(document).ready(function() { //DOM이 준비되고
+        $('#anti').click(function() { // ID가 toggleButton인 요소를 클릭하면
+            var state3 = $('#container3').css('display'); // state 변수에 ID가 moreMenu인 요소의 display의 속성을 '대입'
+            if (state3 == 'none') { // state가 none 상태일경우
+                $('#container1').hide(); // ID가 moreMenu인 요소를 show();
+                $('#container2').hide();
+                $('#container3').show();
+                $('#container4').hide();
+                $('#container5').hide();
+            } else { // 그 외에는
+                $('#container1').hide();
+                $('#container2').hide();
+                $('#container3').show();
+                $('#container4').hide();
+                $('#container5').hide();
+                // ID가 moreMenu인 요소를 hide();
+            }
+        });
+    });
+
+    $(document).ready(function() { //DOM이 준비되고
+        $('#spatial').click(function() { // ID가 toggleButton인 요소를 클릭하면
+            var state4 = $('#container4').css('display'); // state 변수에 ID가 moreMenu인 요소의 display의 속성을 '대입'
+            if (state4 == 'none') { // state가 none 상태일경우
+                $('#container1').hide(); // ID가 moreMenu인 요소를 show();
+                $('#container2').hide();
+                $('#container3').hide();
+                $('#container4').show();
+                $('#container5').hide();
+            } else { // 그 외에는
+                $('#container1').hide();
+                $('#container2').hide();
+                $('#container3').hide();
+                $('#container4').show();
+                $('#container5').hide();
+                // ID가 moreMenu인 요소를 hide();
+            }
+        });
+    });
+
+    $(document).ready(function() { //DOM이 준비되고
+        $('#intro').click(function() { // ID가 toggleButton인 요소를 클릭하면
+            var state5 = $('#container5').css('display'); // state 변수에 ID가 moreMenu인 요소의 display의 속성을 '대입'
+            if (state5 == 'none') { // state가 none 상태일경우
+                $('#container1').hide(); // ID가 moreMenu인 요소를 show();
+                $('#container2').hide();
+                $('#container3').hide();
+                $('#container4').hide();
+                $('#container5').show();
+            } else { // 그 외에는
+                $('#container1').hide();
+                $('#container2').hide();
+                $('#container3').hide();
+                $('#container4').hide();
+                $('#container5').show();
+                // ID가 moreMenu인 요소를 hide();
+            }
+        });
+    });
+</script></html>

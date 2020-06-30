@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script type="text/javascript">
+    function add_div() {
+
+        var div = document.createElement('div');
+
+        div.innerHTML = document.getElementById('room_type').innerHTML;
+
+        document.getElementById('field').appendChild(div);
+    }
+
+
+
+    function remove_div(obj) {
+
+        document.getElementById('field').removeChild(obj.parentNode);
+
+    }
+</script>
+
+
+
+
+<body>
+    <input type="button" value="추가" onclick="add_div()"><br />
+
+    <div id="room_type" style="height:300px;width:300px;background-color:red;">
+
+        <div class="form-group" >
+
+            <label for="image">제목</label>
+
+            <input type="text" id="title" name="title" class="form-control">
+
+        </div>
+
+        <input type="button" value="삭제" onclick="remove_div(this)">
+
+    </div>
+
+    <div id="field" ></div>
+
+
+
+
+</body></html>

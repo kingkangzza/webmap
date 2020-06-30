@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>항생 내성 지도 시스템</title>
+    <link rel="stylesheet" href="/css/index_20200601.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <script src="css/leaflet.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+
+
+<body>
+    <header>
+        <div class="gis_header_debs_1">
+
+            <div></div>
+            <div><b style="color:red; font-weight:900">항생 내성</b> <b style="color:indianred; font-weight:900">지도</b> 시스템</div>
+            <div><img src="./img/khu_logo.PNG" style="width:90px;height:50px;float:right;"></div>
+            <div>
+                <nav>경희대학교</nav>
+                <nav>지리학과</nav>
+            </div>
+            <div></div>
+
+        </div>
+
+        <div class="gis_header_debs_2">
+
+            <nav></nav>
+            <nav id="basin" class="basin">유역 현황 정보</nav>
+            <nav id="anti" class="anti">항생 내성 정보</nav>
+            <nav id="spatial" class="spatial">공간 분석 정보</nav>
+            <nav id="intro" class="intro">시스템 소개</nav>
+            <nav></nav>
+
+        </div>
+
+    </header><!-- header -->
+
+    <div id="container1" class="container1">
+
+        <div id="map" class="map"></div>
+
+        <div class="tap">
+            <div>
+                <nav>수계별 실시간 시간 자료</nav>
+                <nav>실시간 수질 자료</nav>
+                <nav>측정소 운영 현황</nav>
+            </div>
+            <div>
+                <nav>한강 실시간 수질 자료</nav>
+                <nav></nav>
+                <nav>
+                    <span>수계별 검색</span>
+                    <span><select>
+                            <option>1</option>
+                            <option>1</option>
+                            <option>1</option>
+                            <option>1</option>
+                        </select></span>
+                </nav>
+            </div>
+            <div>
+                <table class="tg">
+                    <thead>
+                        <tr>
+                            <th class="tg-0lax"></th>
+                            <th class="tg-0lax"></th>
+                            <th class="tg-0lax"></th>
+                            <th class="tg-0lax"></th>
+                            <th class="tg-0lax"></th>
+                            <th class="tg-0lax"></th>
+                            <th class="tg-0lax"></th>
+                            <th class="tg-0lax"></th>
+                            <th class="tg-0lax"></th>
+                            <th class="tg-0lax"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                        <tr>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                            <td class="tg-0lax"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <p>본 자료는 친수활동 정보제공을 위한 확정 전의 자료이므로 연구 등의 목적으로 활용 시 확정자료를 이용바랍니다.</p>
+
+                <nav class="gis_information_search">
+                    <p>간편수질정보 검색</p>
+                    <p>뒤로가기</p>
+                </nav>
+
+
+            </div>
+
+        </div>
+        <!--tap-->
+
+    </div>
+    <!--container-->
+
+    <div id="container2" class="container2">
+
+
+    </div>
+
+
+</body>
+
+<script>
+    var lat = 36.1358642; //위도
+    var lng = 128.0785804; //경도
+    var zoom = 7; //줌 레벨
+    var mymap = L.map('map', {
+        center: [lat, lng],
+        zoom: zoom
+    });
+    //L.tileLayer('http://xdworld.vworld.kr:8080/2d/Base/service/{z}/{x}/{y}.png').addTo(mymap); //브이월드 지도
+    //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap); //OSM
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' //화면 오른쪽 하단 attributors
+    }).addTo(mymap);
+</script>
+<script>
+    $(document).ready(function() { //DOM이 준비되고
+        $('#basin').click(function() { // ID가 toggleButton인 요소를 클릭하면
+            var state = $('#container1').css('display'); // state 변수에 ID가 moreMenu인 요소의 display의 속성을 '대입'
+            if (state == 'none') { // state가 none 상태일경우
+                $('#container1').show(); // ID가 moreMenu인 요소를 show();
+            } else { // 그 외에는
+                $('#container1').hide(); // ID가 moreMenu인 요소를 hide();
+            }
+        });
+    });
+
+    $(document).ready(function() { //DOM이 준비되고
+        $('#anti').click(function() { // ID가 toggleButton인 요소를 클릭하면
+            var state = $('#container2').css('display'); // state 변수에 ID가 moreMenu인 요소의 display의 속성을 '대입'
+            if (state == 'none') { // state가 none 상태일경우
+                $('#container2').show(); // ID가 moreMenu인 요소를 show();
+            } else { // 그 외에는
+                $('#container2').hide(); // ID가 moreMenu인 요소를 hide();
+            }
+        });
+    });
+</script></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <!--
+
+head에 link의 import를 script에서 처리한다.
+
+-->
+
+    <script type="text/javascript">
+        function checkSupportsImport() {
+
+            console.log('import' in document.createElement('link'));
+
+            return 'import' in document.createElement('link');
+
+        }
+
+
+
+        if (checkSupportsImport()) {
+
+            //여기서 부터 시작
+
+            var link = document.createElement('link'); //link element생성
+
+            link.rel = 'import'; //이건 꼭 써 줘야 된다. 안그럼 import안된다.
+
+            link.href = "index_20200618.html"; //읽을 파일
+
+            link.onload = function(e) {
+
+                //파일이 읽어지면 여기서 id="contents" 부분에 넣으면 된다.
+
+                //넣고 싶은 부분만 넣을 수도 있다.
+
+                var loadHtmlFile = this.import.querySelector('html');
+
+                var contents = document.querySelector('#contents');
+
+                contents.appendChild(loadHtmlFile.cloneNode(true));
+
+            };
+
+            document.head.appendChild(link);
+
+        } else {
+
+            //안되면 오류 처리를 여기 코딩
+
+            alert("안된다 ㅜㅜ ");
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div id="header">이부분은 헤더</div>
+
+    <div id="contents">
+
+        <!-- 여기는 다른 html파일을 넣자 -->
+
+    </div>
+
+    <div id="footer">이부분은 푸터</div>
+
+</body></html>
+

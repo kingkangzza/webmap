@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>항생 내성 지도 시스템</title>
+    <link rel="stylesheet" href="/css/index_20200611.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <script src="css/leaflet.js"></script>
+    <script src="js/common.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <script>
+        $(function() {
+            $("#basin,#anti,#spatial,#intro").click(function() {
+                $(".gis_header_debs_2 nav").removeClass('on');
+                $(".container").removeClass('on');
+                $(this).addClass('on');
+                $("#" + $(this).data('id')).addClass('on');
+            });
+        });
+
+        $(function() {
+            $("#first_screen").click(function() {
+                $(".gis_header_debs_1 div").removeClass('on');
+                $(".container").removeClass('on');
+                $(this).addClass('on');
+                $("#" + $(this).data('id')).addClass('on');
+            });
+        });
+
+        $(function() {
+            $(".anti_button button").click(function() {
+                $(".anti_button button").removeClass('on');
+                $(".anti_result").removeClass('on');
+                $(this).addClass('on');
+                $("#" + $(this).data('id')).addClass('on');
+            });
+        });
+    </script>
+
+
+</head>
+
+
+<body>
+    <header>
+        <div class="gis_header_debs_1">
+
+            <div></div>
+            <div id="first_screen" data-id="container1"><b style="color:red; font-weight:900">항생 내성</b> <b style="color:indianred; font-weight:900">지도</b> 시스템</div>
+            <div></div>
+            <div>
+                <nav><img src="./img/khu_logo.PNG" style="width:90px;height:50px;float:left;">경희대학교</nav>
+                <nav>지리학과</nav>
+            </div>
+
+            <div></div>
+
+        </div>
+
+        <div class="gis_header_debs_2">
+
+            <nav></nav>
+            <nav id="basin" data-id="container2">유역 현황 정보</nav>
+            <nav id="anti" data-id="container3">항생 내성 정보</nav>
+            <nav id="spatial" data-id="container4">공간 분석 정보</nav>
+            <nav id="intro" data-id="container5">시스템 소개</nav>
+            <nav></nav>
+
+        </div>
+
+    </header><!-- header -->
+    <div class="tab">
+
+        <div class="container on" id="container1">
+
+            <div id="map" class="map"></div>
+
+            <div id="tap" class="tap">
+
+                <nav>
+                    <span>자료 획득 시기의 수질자료</span>
+                    <span></span>
+                    <span></span>
+                </nav>
+
+
+                <nav>
+                    <span>수질자료</span>
+                    <span></span>
+                    <span>시기 검색
+                        <select>
+                            <option>1</option>
+                            <option>1</option>
+                            <option>1</option>
+                            <option>1</option>
+                        </select>
+                    </span>
+
+                </nav>
+
+                <nav style="text-align:center; overflow:scroll;">
+                    수질자료 표로 불러오기. Table 형태. 형태는 그림과 같음.<br>
+                    <img src="img/data_table.PNG">
+                </nav>
+
+                <nav>
+                    <span>간편 항생내성정보 검색</span>
+                    <span></span>
+                    <span id="back" class="back"><a style="cursor: pointer;">← 뒤로가기</a></span>
+                </nav>
+
+                <nav id="anti_button" class="anti_button on">
+                    <button id="anti1" class="anti">Antibiotic 1</button>
+                    <button id="anti2" class="anti">Antibiotic 2</button>
+                    <button id="anti3" class="anti">Antibiotic 3</button>
+                    <button id="anti4" class="anti">Antibiotic 4</button>
+                    <button id="anti5" class="anti">Antibiotic 5</button>
+                    <button id="anti6" class="anti">Antibiotic 6</button>
+                    <button id="anti7" class="anti">Antibiotic 7</button>
+                    <button id="anti8" class="anti">Antibiotic 8</button>
+                    <button id="anti9" class="anti">Antibiotic 9</button>
+                    <button id="anti10" class="anti">Antibiotic 10</button>
+                    <button id="anti11" class="anti">Antibiotic 11</button>
+                    <button id="anti12" class="anti">Antibiotic 12</button>
+                    <button id="anti13" class="anti">Antibiotic 13</button>
+                    <button id="anti14" class="anti">Antibiotic 14</button>
+                    <button id="anti15" class="anti">Antibiotic 15</button>
+                    <button id="anti16" class="anti">Antibiotic 16</button>
+
+                </nav>
+
+                <nav id="anti_result1" class="anti_result">
+                    위치(주소), 포인트의 좌표, 가장 가까운 측정소로부터의 거리 (표 형태로 제공)
+                </nav>
+
+                <nav id="anti_result2" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result3" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result4" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result5" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result6" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result7" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result8" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result9" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result10" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result11" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result12" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result13" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result14" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result15" class="anti_result">
+
+                </nav>
+
+                <nav id="anti_result16" class="anti_result">
+
+                </nav>
+
+
+            </div>
+            <!--tap-->
+
+        </div>
+        <!--container-->
+
+        <div class="container" id="container2">
+
+            <div id="map2" class="map2">
+
+
+            </div>
+
+            <div id="tap2" class="tap2">
+
+
+            </div>
+
+        </div>
+
+
+        <div class="container" id="container3">
+
+
+        </div>
+
+
+        <div class="container" id="container4">
+
+
+        </div>
+
+        <div class="container" id="container5">
+
+
+        </div>
+    </div> <!-- tap -->
+
+    <div id="footer" class="footer">
+
+        <div id="footer1" class="footer1">
+            <nav></nav>
+            <nav>홈페이지 안내 : 02-961-9188</nav>
+            <nav></nav>
+            <nav></nav>
+        </div>
+
+        <div id="footer2" class="footer2">
+            <nav><img src="./img/khu_logo.PNG" style="width:70px;height:40px;float:right; position:relative;top:17px;"></nav>
+            <nav>경희대학교 (02447) 서울특별시 동대문구 경희대로 26<br>
+                Kyunghee Univ. Seoul. Dongdaemun-gu. Kyungheedae-ro 26.</nav>
+            <nav><img src="./img/envior_logo.PNG" style="width:30px;height:30px;float:left; position:relative;top:21.5px;"> 환경부 (30103) 세종특별자치시 도움6로 정부세종청사</nav>
+            <nav></nav>
+        </div>
+
+
+    </div>
+
+
+</body>
+<script script type="text/javascript">
+    var lat = 36.1358642; //위도
+    var lng = 128.0785804; //경도
+    var zoom = 7; //줌 레벨
+    var mymap = L.map('map', {
+        center: [lat, lng],
+        zoom: zoom
+    });
+    //L.tileLayer('http://xdworld.vworld.kr:8080/2d/Base/service/{z}/{x}/{y}.png').addTo(mymap); //브이월드 지도
+    //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap); //OSM
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' //화면 오른쪽 하단 attributors
+    }).addTo(mymap);
+
+
+    var mymap2 = L.map('map2', {
+        center: [lat, lng],
+        zoom: zoom
+    });
+    //L.tileLayer('http://xdworld.vworld.kr:8080/2d/Base/service/{z}/{x}/{y}.png').addTo(mymap); //브이월드 지도
+    //L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mymap); //OSM
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' //화면 오른쪽 하단 attributors
+    }).addTo(mymap2);
+</script></html>

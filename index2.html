@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>항생 내성 지도 시스템</title>
+    <link rel="stylesheet" href="./css/index_20200613.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <script src="css/leaflet.js"></script>
+    <script src="js/common.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+</head>
+<style>
+
+    .map2 {
+        width: 100vw;
+        height: 100vh;
+        background: pink;
+    }
+</style>
+
+<body>
+
+
+
+    <div id="map2" class="map2">
+
+
+    </div>
+
+
+
+
+</body>
+<script script type="text/javascript">
+        var map2;
+    map2 = L.map('map2').setView([36.5, 127.5], 7);
+    map2.attributionControl.setPrefix('');
+    var layer = new L.TileLayer('http://xdworld.vworld.kr:8080/2d/Base/201411/{z}/{x}/{y}.png', {
+        attribution: '© Vworld',
+        minZoom: 1,
+        maxZoom: 19
+    }).addTo(map2);
+</script></html>
